@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
 
 namespace VITcloud_UI
@@ -115,12 +116,10 @@ namespace VITcloud_UI
                 else
                 {
                     scan(directories[count]);
-                    System.Threading.Thread.Sleep(1000);
                     worker.ReportProgress(count * 20);
                 }
             }
             upload();
-            System.Threading.Thread.Sleep(1000);
             worker.ReportProgress(100);
         }
 
@@ -177,10 +176,10 @@ namespace VITcloud_UI
         private void upload()
         {
             Data data = new Data(hostel, block, room, fileData.ToArray());
-
             String json = JsonConvert.SerializeObject(data);
 
-            Console.WriteLine(json);
+            WebClient client = new WebClient();
+            // TODO HTTP Request
         }
     }
 }
