@@ -1,5 +1,5 @@
 # VITcloud-Windows-Client
 
-Windows client for VITcloud
+This is the Windows client for VITcloud
 
-Download the latest release from [here]https://github.com/aneesh-neelam/VITcloud-Client-Windows/releases). 
+Download the latest release from [here](https://github.com/aneesh-neelam/VITcloud-Client-Windows/releases). 
