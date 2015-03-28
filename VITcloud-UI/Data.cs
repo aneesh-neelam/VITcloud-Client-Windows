@@ -7,10 +7,10 @@ namespace VITcloud_UI
 {
     class Data
     {
-        private String Hostel;
-        private String Room;
-        private String Block;
-        private String[] Files;
+        public String Hostel;
+        public String Room;
+        public String Block;
+        public String[] Files;
 
         public Data(String Hostel, String Block, String Room, String[] Files)
         {
