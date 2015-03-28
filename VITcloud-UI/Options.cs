@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 
 namespace VITcloud_UI
@@ -9,6 +12,8 @@ namespace VITcloud_UI
         private String hostel;
         private String block;
         private String room;
+        List <String> fileData;
+
         private String[] directories;
 
         BackgroundWorker worker;
@@ -26,6 +31,7 @@ namespace VITcloud_UI
             worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
 
             directories = new String[4];
+            fileData = new List <String> ();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -152,12 +158,29 @@ namespace VITcloud_UI
 
         private void scan(String path)
         {
+            if (Directory.Exists(path))
+            {
+                getProperties(Directory.GetFiles(path, "*.*", SearchOption.AllDirectories));
+            }
+        }
 
+        private void getProperties(String[] files)
+        {
+            foreach(String file in files)
+            {
+                FileInfo fileInfo = new FileInfo(file);
+                fileData.Add(fileInfo.Name);
+                fileData.Add(fileInfo.Length.ToString());
+            }
         }
 
         private void upload()
         {
+            Data data = new Data(hostel, block, room, fileData.ToArray());
 
+            String json = JsonConvert.SerializeObject(data);
+
+            Console.WriteLine(json);
         }
     }
 }
