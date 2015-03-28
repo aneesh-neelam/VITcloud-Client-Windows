@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace VITcloud_UI
@@ -16,9 +11,16 @@ namespace VITcloud_UI
         private String room;
         private String[] directories;
 
+        BackgroundWorker worker;
+
         public Options()
         {
             InitializeComponent();
+
+            worker = new BackgroundWorker();
+            worker.WorkerSupportsCancellation = true;
+            worker.WorkerReportsProgress = true;
+
             directories = new String[4];
         }
 
@@ -62,15 +64,78 @@ namespace VITcloud_UI
             directories[2] = directory_3.Text;
             directories[3] = directory_4.Text;
 
-            Data data = new Data(hostel, block, room, directories);
-            data.Scan();
+            if (!worker.IsBusy)
+            {
+                progressBar.Visible = true;
+                progressBar.Minimum = 1;
+                progressBar.Maximum = directories.Length;
+                progressBar.Value = 1;
+                progressBar.Step = 1;
 
-            this.Close();
+                worker.RunWorkerAsync();
+            }
         }
 
         private void cancel_button_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (worker.WorkerSupportsCancellation && worker.IsBusy)
+            {
+                progressBar.Visible = false;
+
+                worker.CancelAsync();
+            }
+        }
+
+        private void worker_doWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            for (int count = 0; count < 4; ++count)
+            {
+                if ((worker.CancellationPending == true))
+                {
+                    e.Cancel = true;
+                    break;
+                }
+                else
+                {
+                    scan(directories[count]);
+                    worker.ReportProgress(count * 25);
+                }
+            }
+        }
+
+        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar.PerformStep();
+        }
+
+        private void worker_workComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            String message;
+            String caption;
+            if (e.Cancelled == true)
+            {
+                caption = "Cancelled Operation";
+                message = "You have cancelled the operation. ";
+            }
+            else if (e.Error != null)
+            {
+                caption = "Error Occured";
+                message = e.Error.Message;
+            }
+            else
+            {
+                caption = "Successful Operation";
+                message = "Successfully Scanned all Media Files";
+            }
+
+            MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void scan(String path)
+        {
+
         }
     }
 }

@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.directory_panel = new System.Windows.Forms.Panel();
+            this.directory_4 = new System.Windows.Forms.TextBox();
+            this.browse_button_4 = new System.Windows.Forms.Button();
+            this.directory_3 = new System.Windows.Forms.TextBox();
+            this.browse_button_3 = new System.Windows.Forms.Button();
+            this.directory_2 = new System.Windows.Forms.TextBox();
+            this.browse_button_2 = new System.Windows.Forms.Button();
+            this.directory_1 = new System.Windows.Forms.TextBox();
             this.browse_button_1 = new System.Windows.Forms.Button();
             this.ok_button = new System.Windows.Forms.Button();
             this.cancel_button = new System.Windows.Forms.Button();
@@ -37,18 +44,12 @@
             this.hostel_dropdown = new System.Windows.Forms.ComboBox();
             this.hostel_panel_label = new System.Windows.Forms.Label();
             this.hostel_panel = new System.Windows.Forms.Panel();
-            this.directory_panel_label = new System.Windows.Forms.Label();
-            this.block_text = new System.Windows.Forms.TextBox();
-            this.hostel_label = new System.Windows.Forms.Label();
-            this.block_label = new System.Windows.Forms.Label();
             this.room_label = new System.Windows.Forms.Label();
-            this.directory_1 = new System.Windows.Forms.TextBox();
-            this.directory_2 = new System.Windows.Forms.TextBox();
-            this.browse_button_2 = new System.Windows.Forms.Button();
-            this.directory_3 = new System.Windows.Forms.TextBox();
-            this.browse_button_3 = new System.Windows.Forms.Button();
-            this.directory_4 = new System.Windows.Forms.TextBox();
-            this.browse_button_4 = new System.Windows.Forms.Button();
+            this.block_label = new System.Windows.Forms.Label();
+            this.hostel_label = new System.Windows.Forms.Label();
+            this.block_text = new System.Windows.Forms.TextBox();
+            this.directory_panel_label = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.directory_panel.SuspendLayout();
             this.hostel_panel.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +69,64 @@
             this.directory_panel.Name = "directory_panel";
             this.directory_panel.Size = new System.Drawing.Size(405, 187);
             this.directory_panel.TabIndex = 0;
+            // 
+            // directory_4
+            // 
+            this.directory_4.Location = new System.Drawing.Point(6, 136);
+            this.directory_4.Name = "directory_4";
+            this.directory_4.Size = new System.Drawing.Size(321, 20);
+            this.directory_4.TabIndex = 6;
+            // 
+            // browse_button_4
+            // 
+            this.browse_button_4.Location = new System.Drawing.Point(333, 134);
+            this.browse_button_4.Name = "browse_button_4";
+            this.browse_button_4.Size = new System.Drawing.Size(62, 23);
+            this.browse_button_4.TabIndex = 7;
+            this.browse_button_4.Text = "Browse";
+            this.browse_button_4.UseVisualStyleBackColor = true;
+            this.browse_button_4.Click += new System.EventHandler(this.browse_button_4_Click);
+            // 
+            // directory_3
+            // 
+            this.directory_3.Location = new System.Drawing.Point(6, 96);
+            this.directory_3.Name = "directory_3";
+            this.directory_3.Size = new System.Drawing.Size(321, 20);
+            this.directory_3.TabIndex = 4;
+            // 
+            // browse_button_3
+            // 
+            this.browse_button_3.Location = new System.Drawing.Point(333, 94);
+            this.browse_button_3.Name = "browse_button_3";
+            this.browse_button_3.Size = new System.Drawing.Size(62, 23);
+            this.browse_button_3.TabIndex = 5;
+            this.browse_button_3.Text = "Browse";
+            this.browse_button_3.UseVisualStyleBackColor = true;
+            this.browse_button_3.Click += new System.EventHandler(this.browse_button_3_Click);
+            // 
+            // directory_2
+            // 
+            this.directory_2.Location = new System.Drawing.Point(6, 57);
+            this.directory_2.Name = "directory_2";
+            this.directory_2.Size = new System.Drawing.Size(321, 20);
+            this.directory_2.TabIndex = 2;
+            // 
+            // browse_button_2
+            // 
+            this.browse_button_2.Location = new System.Drawing.Point(333, 55);
+            this.browse_button_2.Name = "browse_button_2";
+            this.browse_button_2.Size = new System.Drawing.Size(62, 23);
+            this.browse_button_2.TabIndex = 3;
+            this.browse_button_2.Text = "Browse";
+            this.browse_button_2.UseVisualStyleBackColor = true;
+            this.browse_button_2.Click += new System.EventHandler(this.browse_button_2_Click);
+            // 
+            // directory_1
+            // 
+            this.directory_1.Location = new System.Drawing.Point(6, 22);
+            this.directory_1.Name = "directory_1";
+            this.directory_1.Size = new System.Drawing.Size(321, 20);
+            this.directory_1.TabIndex = 0;
             // 
             // browse_button_1
             // 
@@ -139,30 +198,14 @@
             this.hostel_panel.Size = new System.Drawing.Size(405, 47);
             this.hostel_panel.TabIndex = 7;
             // 
-            // directory_panel_label
+            // room_label
             // 
-            this.directory_panel_label.AutoSize = true;
-            this.directory_panel_label.Location = new System.Drawing.Point(25, 103);
-            this.directory_panel_label.Name = "directory_panel_label";
-            this.directory_panel_label.Size = new System.Drawing.Size(89, 13);
-            this.directory_panel_label.TabIndex = 8;
-            this.directory_panel_label.Text = "Media Directories";
-            // 
-            // block_text
-            // 
-            this.block_text.Location = new System.Drawing.Point(204, 9);
-            this.block_text.Name = "block_text";
-            this.block_text.Size = new System.Drawing.Size(55, 20);
-            this.block_text.TabIndex = 6;
-            // 
-            // hostel_label
-            // 
-            this.hostel_label.AutoSize = true;
-            this.hostel_label.Location = new System.Drawing.Point(3, 12);
-            this.hostel_label.Name = "hostel_label";
-            this.hostel_label.Size = new System.Drawing.Size(37, 13);
-            this.hostel_label.TabIndex = 7;
-            this.hostel_label.Text = "Hostel";
+            this.room_label.AutoSize = true;
+            this.room_label.Location = new System.Drawing.Point(292, 12);
+            this.room_label.Name = "room_label";
+            this.room_label.Size = new System.Drawing.Size(35, 13);
+            this.room_label.TabIndex = 9;
+            this.room_label.Text = "Room";
             // 
             // block_label
             // 
@@ -173,72 +216,37 @@
             this.block_label.TabIndex = 8;
             this.block_label.Text = "Block";
             // 
-            // room_label
+            // hostel_label
             // 
-            this.room_label.AutoSize = true;
-            this.room_label.Location = new System.Drawing.Point(292, 12);
-            this.room_label.Name = "room_label";
-            this.room_label.Size = new System.Drawing.Size(35, 13);
-            this.room_label.TabIndex = 9;
-            this.room_label.Text = "Room";
+            this.hostel_label.AutoSize = true;
+            this.hostel_label.Location = new System.Drawing.Point(3, 12);
+            this.hostel_label.Name = "hostel_label";
+            this.hostel_label.Size = new System.Drawing.Size(37, 13);
+            this.hostel_label.TabIndex = 7;
+            this.hostel_label.Text = "Hostel";
             // 
-            // directory_1
+            // block_text
             // 
-            this.directory_1.Location = new System.Drawing.Point(6, 22);
-            this.directory_1.Name = "directory_1";
-            this.directory_1.Size = new System.Drawing.Size(321, 20);
-            this.directory_1.TabIndex = 0;
+            this.block_text.Location = new System.Drawing.Point(204, 9);
+            this.block_text.Name = "block_text";
+            this.block_text.Size = new System.Drawing.Size(55, 20);
+            this.block_text.TabIndex = 6;
             // 
-            // directory_2
+            // directory_panel_label
             // 
-            this.directory_2.Location = new System.Drawing.Point(6, 57);
-            this.directory_2.Name = "directory_2";
-            this.directory_2.Size = new System.Drawing.Size(321, 20);
-            this.directory_2.TabIndex = 2;
+            this.directory_panel_label.AutoSize = true;
+            this.directory_panel_label.Location = new System.Drawing.Point(25, 103);
+            this.directory_panel_label.Name = "directory_panel_label";
+            this.directory_panel_label.Size = new System.Drawing.Size(89, 13);
+            this.directory_panel_label.TabIndex = 8;
+            this.directory_panel_label.Text = "Media Directories";
             // 
-            // browse_button_2
+            // progressBar
             // 
-            this.browse_button_2.Location = new System.Drawing.Point(333, 55);
-            this.browse_button_2.Name = "browse_button_2";
-            this.browse_button_2.Size = new System.Drawing.Size(62, 23);
-            this.browse_button_2.TabIndex = 3;
-            this.browse_button_2.Text = "Browse";
-            this.browse_button_2.UseVisualStyleBackColor = true;
-            this.browse_button_2.Click += new System.EventHandler(this.browse_button_2_Click);
-            // 
-            // directory_3
-            // 
-            this.directory_3.Location = new System.Drawing.Point(6, 96);
-            this.directory_3.Name = "directory_3";
-            this.directory_3.Size = new System.Drawing.Size(321, 20);
-            this.directory_3.TabIndex = 4;
-            // 
-            // browse_button_3
-            // 
-            this.browse_button_3.Location = new System.Drawing.Point(333, 94);
-            this.browse_button_3.Name = "browse_button_3";
-            this.browse_button_3.Size = new System.Drawing.Size(62, 23);
-            this.browse_button_3.TabIndex = 5;
-            this.browse_button_3.Text = "Browse";
-            this.browse_button_3.UseVisualStyleBackColor = true;
-            this.browse_button_3.Click += new System.EventHandler(this.browse_button_3_Click);
-            // 
-            // directory_4
-            // 
-            this.directory_4.Location = new System.Drawing.Point(6, 136);
-            this.directory_4.Name = "directory_4";
-            this.directory_4.Size = new System.Drawing.Size(321, 20);
-            this.directory_4.TabIndex = 6;
-            // 
-            // browse_button_4
-            // 
-            this.browse_button_4.Location = new System.Drawing.Point(333, 134);
-            this.browse_button_4.Name = "browse_button_4";
-            this.browse_button_4.Size = new System.Drawing.Size(62, 23);
-            this.browse_button_4.TabIndex = 7;
-            this.browse_button_4.Text = "Browse";
-            this.browse_button_4.UseVisualStyleBackColor = true;
-            this.browse_button_4.Click += new System.EventHandler(this.browse_button_4_Click);
+            this.progressBar.Location = new System.Drawing.Point(123, 332);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(210, 35);
+            this.progressBar.TabIndex = 9;
             // 
             // Options
             // 
@@ -247,6 +255,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(456, 388);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.directory_panel_label);
             this.Controls.Add(this.hostel_panel);
             this.Controls.Add(this.hostel_panel_label);
@@ -288,6 +297,7 @@
         private System.Windows.Forms.Button browse_button_3;
         private System.Windows.Forms.TextBox directory_2;
         private System.Windows.Forms.Button browse_button_2;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
