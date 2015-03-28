@@ -167,6 +167,7 @@
             // 
             // hostel_dropdown
             // 
+            this.hostel_dropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.hostel_dropdown.FormattingEnabled = true;
             this.hostel_dropdown.Items.AddRange(new object[] {
             "Boys Hostel",

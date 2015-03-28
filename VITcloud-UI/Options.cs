@@ -25,15 +25,13 @@ namespace VITcloud_UI
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_workComplete);
             worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
 
-            progressBar.Visible = false;
-            cancel_button.Enabled = false;
-
             directories = new String[4];
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            progressBar.Visible = false;
+            cancel_button.Enabled = false;
         }
 
         private void browse_button_1_Click(object sender, EventArgs e)
@@ -146,7 +144,7 @@ namespace VITcloud_UI
             else
             {
                 caption = "Successful Operation";
-                message = "Successfully Scanned all Media Files";
+                message = "Successfully Scanned all Media Files. ";
             }
 
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
