@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Windows.Forms;
 
 namespace VITcloud_UI
 {
     public partial class Options : Form
     {
+        private const String VITcloud_Interface = "https://vitcloud-biocross.rhcloud.com/interface";
+
         private String hostel;
         private String block;
         private String room;
@@ -121,6 +124,7 @@ namespace VITcloud_UI
             }
             upload();
             worker.ReportProgress(100);
+            
         }
 
         private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -178,8 +182,22 @@ namespace VITcloud_UI
             Data data = new Data(hostel, block, room, fileData.ToArray());
             String json = JsonConvert.SerializeObject(data);
 
-            WebClient client = new WebClient();
-            // TODO HTTP Request
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(VITcloud_Interface);
+            httpWebRequest.ContentType = "text/json";
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
         }
     }
 }
