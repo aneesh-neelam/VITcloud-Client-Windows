@@ -21,6 +21,13 @@ namespace VITcloud_UI
             worker.WorkerSupportsCancellation = true;
             worker.WorkerReportsProgress = true;
 
+            worker.DoWork += new DoWorkEventHandler(worker_doWork);
+            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_workComplete);
+            worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
+
+            progressBar.Visible = false;
+            cancel_button.Enabled = false;
+
             directories = new String[4];
         }
 
@@ -66,9 +73,12 @@ namespace VITcloud_UI
 
             if (!worker.IsBusy)
             {
+                ok_button.Enabled = false;
+                cancel_button.Enabled = true;
+
                 progressBar.Visible = true;
-                progressBar.Minimum = 1;
-                progressBar.Maximum = directories.Length;
+                progressBar.Minimum = 0;
+                progressBar.Maximum = directories.Length + 1;
                 progressBar.Value = 1;
                 progressBar.Step = 1;
 
@@ -80,6 +90,7 @@ namespace VITcloud_UI
         {
             if (worker.WorkerSupportsCancellation && worker.IsBusy)
             {
+                ok_button.Enabled = true;
                 progressBar.Visible = false;
 
                 worker.CancelAsync();
@@ -100,9 +111,13 @@ namespace VITcloud_UI
                 else
                 {
                     scan(directories[count]);
-                    worker.ReportProgress(count * 25);
+                    System.Threading.Thread.Sleep(1000);
+                    worker.ReportProgress(count * 20);
                 }
             }
+            upload();
+            System.Threading.Thread.Sleep(1000);
+            worker.ReportProgress(100);
         }
 
         private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -112,6 +127,10 @@ namespace VITcloud_UI
 
         private void worker_workComplete(object sender, RunWorkerCompletedEventArgs e)
         {
+            ok_button.Enabled = true;
+            cancel_button.Enabled = false;
+            progressBar.Visible = false;
+
             String message;
             String caption;
             if (e.Cancelled == true)
@@ -134,6 +153,11 @@ namespace VITcloud_UI
         }
 
         private void scan(String path)
+        {
+
+        }
+
+        private void upload()
         {
 
         }
